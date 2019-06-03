@@ -33,38 +33,108 @@ def findLargestObject(obj1, obj2):
 	print(object1Volume)
 	print(object2Volume)
 
-def canLargestObjectFit(width, length, height):
-    canFit = False
-	for x in range(1) and canFit == False:
-		if (width<metricBoxes[0] and length<metricBoxes[1] and height<metricBoxes[2]):
+#checks to see if the largest object can fit in a box
+def canLargestObjectFit(width, length, height, rotation = 0):
+	for x in range(1):
+		if (width<theBox[0] and length<theBox[1] and height<theBox[2] and rotation == 0):
 			print("It fits when at normal orientation")
-			canFit = True
-		if (width<metricBoxes[0] and length<metricBoxes[2] and height<metricBoxes[1]):
+			break
+		if (width<theBox[0] and length<theBox[2] and height<theBox[1] and rotation == 1):
 			print("It fits when pitched +90 degrees")
-			canFit = True
-		if (width<metricBoxes[2] and length<metricBoxes[1] and height<metricBoxes[0]):
+			break
+		if (width<theBox[2] and length<theBox[1] and height<theBox[0] and rotation == 2):
 			print("It fits when rolled +90 degrees")
-			canFit = True
-		if (width<metricBoxes[1] and length<metricBoxes[0] and height<metricBoxes[2]):
+			break
+		if (width<theBox[1] and length<theBox[0] and height<theBox[2] and rotation == 3):
 			print("It fits when yawed +90 degrees")
-			canFit = True
-		if (width<metricBoxes[1] and length<metricBoxes[2] and height<metricBoxes[0]):
+			break
+		if (width<theBox[1] and length<theBox[2] and height<theBox[0] and rotation == 4):
 			print("It fits when yawed +90 degrees and pitched 90+ degrees, or pitched +90 degrees and rolled +90 degrees, or rolled +90 degrees and yawed +90 degrees")
-			canFit = True
-		if (width<metricBoxes[2] and length<metricBoxes[0] and height<metricBoxes[1]):
-			print("It fits, when rolled +90 degrees and pitched +90 degrees, or yawed +90 degrees and rolled +90 degrees, or pitched +90 degrees and yawed +90 degrees")
-			canFit = True
+			break
+		if (width<theBox[2] and length<theBox[0] and height<theBox[1] and rotation == 5):
+			print("It fits when rolled +90 degrees and pitched +90 degrees, or yawed +90 degrees and rolled +90 degrees, or pitched +90 degrees and yawed +90 degrees")
+			break
 	else:
-		print("Does not fit")
+		print("Does not fit using rotation " + str(rotation))
+		pass
+
+#checks to see if the smallest object can fit in a box with the large object
+def canSmallestObjectFit(width, length, height, rotation = 0):
+	for x in range(1):
+		#smallest object at normal orientation
+		if (width<theBox[0] and length<theBox[1] and height<theBox[2] and rotation == 0):
+			c = 0
+			if ((smallestObject[2] + largestObject[2]) <= theBox[2]):
+				print("It fits when both objects are at normal orientation, stacked on top of the largest object")
+				c += 1
+			if ((smallestObject[0] + largestObject[0]) <= theBox[0]):
+				print("It fits when both objects are at normal orientation, placed beside each other, width-wise")
+				c += 1
+			if ((smallestObject[1] + largestObject[1]) <= theBox[1]):
+				print("It fits when both objects are at normal orientation, placed beside each other, length-wise")
+				c += 1
+			if c > 0:
+				break
+		#smallest object pitched at +90 degrees
+		if (width<theBox[0] and length<theBox[2] and height<theBox[1] and rotation == 1):
+			c = 0
+			if ((smallestObject[1] + largestObject[1]) <= theBox[2]):
+				print("It fits when both objects are pitched +90 degrees, stacked on top of the largest object")
+				c += 1
+			if ((smallestObject[0] + largestObject[0]) <= theBox[0]):
+				print("It fits when both objects are pitched +90 degrees, placed beside each other, width-wise")
+				c += 1
+			if ((smallestObject[2] + largestObject[2]) <= theBox[1]):
+				print("It fits when both objects are pitched +90 degrees, placed beside each other, length-wise")
+				c += 1
+			if c > 0:
+				break
+		#smallest object rolled at +90 degrees
+		if (width<theBox[2] and length<theBox[1] and height<theBox[0] and rotation == 2):
+			c = 0
+			if ((smallestObject[0] + largestObject[0]) <= theBox[2]):
+				print("It fits when both objects are rolled +90 degrees, stacked on top of the largest object")
+				c += 1
+			if ((smallestObject[2] + largestObject[2]) <= theBox[0]):
+				print("It fits when both objects are rolled +90 degrees, placed beside each other, width-wise")
+				c += 1
+			if ((smallestObject[1] + largestObject[1]) <= theBox[1]):
+				print("It fits when both objects are rolled +90 degrees, placed beside each other, length-wise")
+				c += 1
+			if c > 0:
+				break
+		#smallest object yawed at +90 degrees
+		if (width<theBox[1] and length<theBox[0] and height<theBox[2] and rotation == 3):
+			print("It fits when yawed +90 degrees")
+			break
+		#first combinations
+		if (width<theBox[1] and length<theBox[2] and height<theBox[0] and rotation == 4):
+			print("It fits when yawed +90 degrees and pitched 90+ degrees, or pitched +90 degrees and rolled +90 degrees, or rolled +90 degrees and yawed +90 degrees")
+			break
+		#second combinations
+		if (width<theBox[2] and length<theBox[0] and height<theBox[1] and rotation == 5):
+			print("It fits when rolled +90 degrees and pitched +90 degrees, or yawed +90 degrees and rolled +90 degrees, or pitched +90 degrees and yawed +90 degrees")
+			break
+	else:
+		print("Does not fit using rotation " + str(rotation))
 		pass
 
 largestObjectName = findLargestObject(object1, object2)
-print("The largest object is " + largestObjectName)
-print(largestObject)
-print(smallestObject)
+print("V~~~Basic Information~~~V")
+print("The largest object by volume is " + largestObjectName)
+print("Largest Object; Width, Length, Height:	" + str(largestObject))
+print("Smallest Object; Width, Length, Height:	" + str(smallestObject))
+print()
 
-canLargestObjectFit(largestObject[0],largestObject[1],largestObject[2])
+print("V~~~Can Large Object Fit?~~~V")
+for x in range(6):
+  canLargestObjectFit(largestObject[0],largestObject[1],largestObject[2], x)
+print()
 
+print("V~~~Can Small Object Fit With Large Object?~~~V")
+for x in range(6):
+  canSmallestObjectFit(smallestObject[0],smallestObject[1],smallestObject[2], x)
+print()
 
 
 
