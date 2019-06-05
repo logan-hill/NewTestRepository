@@ -59,11 +59,32 @@ def canLargestObjectFit(width, length, height, rotation = 0):
 		pass
 
 #checks to see if the smallest object can fit in a box with the large object, checks for all possible orientations of both objects
-#the smallest object is ALWAYS placed AFTER the largest is placed
+#assume that the smallest object is ALWAYS placed AFTER the largest is placed
 def canSmallestObjectFit(width, length, height, rotation = 0):
 	for x in range(1):
+		#second attempt at an easier version to find smallest object at normal orientation
+		if (width<=theBox[0] and length<=theBox[1] and height<=theBox[2] and rotation == 0):
+			c = 0
+			for i in range(12):
+				if ((smallestObject[2] + largestObject[2]) <= theBox[2]):
+					print("Found a match!")
+					c += 1
+				else:
+					print("*****Does not fit in this orientation*****")
+				if ((smallestObject[0] + largestObject[0]) <= theBox[0]):
+					print("Found a match!")
+					c += 1
+				else:
+					print("*****Does not fit in this orientation*****")
+				if ((smallestObject[1] + largestObject[1]) <= theBox[1]):
+					print("Found a match!")
+					c += 1
+				else:
+					print("*****Does not fit in this orientation*****")
+			if c > 0:
+				break
 		#smallest object at normal orientation
-		if (width<theBox[0] and length<theBox[1] and height<theBox[2] and rotation == 0):
+		if (width<=theBox[0] and length<=theBox[1] and height<=theBox[2] and rotation == 0):
 			c = 0
 			if ((smallestObject[2] + largestObject[2]) <= theBox[2]):
 				print("It fits when both objects are at normal orientation, stacked on top of the largest object")
@@ -81,15 +102,55 @@ def canSmallestObjectFit(width, length, height, rotation = 0):
 			else:
 				print("*****Does not fit in this orientation*****")
 			#both objects have different rotations past here
-			if ((smallestObject[2] + largestObject[1]) <= theBox[1]):
+			if ((smallestObject[2] + largestObject[1]) <= theBox[2]):
 				print("It fits when the smallest object is normal, and the largest is pitched 90, stacked")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[0] + largestObject[0]) <= theBox[0]):
+				print("It fits when the smallest object is normal, and the largest is pitched 90, placed width-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[1] + largestObject[2]) <= theBox[1]):
+				print("It fits when the smallest object is normal, and the largest is pitched 90, placed length-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[2] + largestObject[0]) <= theBox[2]):
+				print("It fits when the smallest object is normal, and the largest is rolled 90, stacked")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[0] + largestObject[2]) <= theBox[0]):
+				print("It fits when the smallest object is normal, and the largest is rolled 90, placed width-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[1] + largestObject[1]) <= theBox[1]):
+				print("It fits when the smallest object is normal, and the largest is rolled 90, placed length-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[2] + largestObject[2]) <= theBox[2]):
+				print("It fits when the smallest object is normal, and the largest is yawed 90, stacked")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[0] + largestObject[1]) <= theBox[0]):
+				print("It fits when the smallest object is normal, and the largest is yawed 90, placed width-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[1] + largestObject[0]) <= theBox[1]):
+				print("It fits when the smallest object is normal, and the largest is yawed 90, placed length-wise")
 				c += 1
 			else:
 				print("*****Does not fit in this orientation*****")
 			if c > 0:
 				break
 		#smallest object pitched at +90 degrees
-		if (width<theBox[0] and length<theBox[2] and height<theBox[1] and rotation == 1):
+		if (width<=theBox[0] and length<=theBox[2] and height<=theBox[1] and rotation == 1):
 			c = 0
 			if ((smallestObject[1] + largestObject[1]) <= theBox[2]):
 				print("It fits when both objects are pitched +90 degrees, stacked on top of the largest object")
@@ -107,10 +168,55 @@ def canSmallestObjectFit(width, length, height, rotation = 0):
 			else:
 				print("*****Does not fit in this orientation*****")
 			#both objects have different rotations past here
+			if ((smallestObject[1] + largestObject[2]) <= theBox[2]):
+				print("It fits when the smallest object is pitched +90, and the largest is normal, stacked")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[0] + largestObject[0]) <= theBox[0]):
+				print("It fits when the smallest object is pitched +90, and the largest is normal, placed width-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[2] + largestObject[1]) <= theBox[1]):
+				print("It fits when the smallest object is pitched +90, and the largest is normal, placed length-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[1] + largestObject[0]) <= theBox[2]):
+				print("It fits when the smallest object is pitched +90, and the largest is rolled +90, stacked")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[0] + largestObject[2]) <= theBox[0]):
+				print("It fits when the smallest object is pitched +90, and the largest is rolled +90, placed width-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[2] + largestObject[1]) <= theBox[1]):
+				print("It fits when the smallest object is pitched +90, and the largest is rolled +90, placed length-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[1] + largestObject[2]) <= theBox[2]):
+				print("It fits when the smallest object is pitched +90, and the largest is yawed +90, stacked")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[0] + largestObject[1]) <= theBox[0]):
+				print("It fits when the smallest object is pitched +90, and the largest is yawed +90, placed width-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[2] + largestObject[0]) <= theBox[1]):
+				print("It fits when the smallest object is pitched +90, and the largest is yawed +90, placed length-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
 			if c > 0:
 				break
 		#smallest object rolled at +90 degrees
-		if (width<theBox[2] and length<theBox[1] and height<theBox[0] and rotation == 2):
+		if (width<=theBox[2] and length<=theBox[1] and height<=theBox[0] and rotation == 2):
 			c = 0
 			if ((smallestObject[0] + largestObject[0]) <= theBox[2]):
 				print("It fits when both objects are rolled +90 degrees, stacked on top of the largest object")
@@ -128,10 +234,55 @@ def canSmallestObjectFit(width, length, height, rotation = 0):
 			else:
 				print("*****Does not fit in this orientation*****")
 			#both objects have different rotations past here
+			if ((smallestObject[0] + largestObject[2]) <= theBox[2]):
+				print("It fits when the smallest object is rolled +90, and the largest is normal, stacked")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[2] + largestObject[0]) <= theBox[0]):
+				print("It fits when the smallest object is rolled +90, and the largest is normal, placed width-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[1] + largestObject[1]) <= theBox[1]):
+				print("It fits when the smallest object is rolled +90, and the largest is normal, placed length-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[0] + largestObject[1]) <= theBox[2]):
+				print("It fits when the smallest object is rolled +90, and the largest is pitched +90, stacked")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[2] + largestObject[0]) <= theBox[0]):
+				print("It fits when the smallest object is rolled +90, and the largest is pitched +90, placed with-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[1] + largestObject[2]) <= theBox[1]):
+				print("It fits when the smallest object is rolled +90, and the largest is pitched +90, placed length-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[0] + largestObject[2]) <= theBox[2]):
+				print("It fits when the smallest object is rolled +90, and the largest is yawed +90, stacked")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[2] + largestObject[1]) <= theBox[0]):
+				print("It fits when the smallest object is rolled +90, and the largest is yawed +90, placed width-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
+			if ((smallestObject[1] + largestObject[0]) <= theBox[1]):
+				print("It fits when the smallest object is rolled +90, and the largest is yawed +90, placed length-wise")
+				c += 1
+			else:
+				print("*****Does not fit in this orientation*****")
 			if c > 0:
 				break
 		#smallest object yawed at +90 degrees
-		if (width<theBox[1] and length<theBox[0] and height<theBox[2] and rotation == 3):
+		if (width<=theBox[1] and length<=theBox[0] and height<=theBox[2] and rotation == 3):
 			c = 0
 			if ((smallestObject[2] + largestObject[2]) <= theBox[2]):
 				print("It fits when both objects are yawed +90 degrees, stacked on top of the largest object")
@@ -152,7 +303,7 @@ def canSmallestObjectFit(width, length, height, rotation = 0):
 			if c > 0:
 				break
 		#first combinations
-		if (width<theBox[1] and length<theBox[2] and height<theBox[0] and rotation == 4):
+		if (width<=theBox[1] and length<=theBox[2] and height<=theBox[0] and rotation == 4):
 			c = 0
 			if ((smallestObject[0] + largestObject[0]) <= theBox[2]):
 				print("It fits when both objects are yawed +90 degrees and pitched 90+ degrees, or pitched +90 degrees and rolled +90 degrees, or rolled +90 degrees and yawed +90 degrees, stacked on top of the largest object")
@@ -173,7 +324,7 @@ def canSmallestObjectFit(width, length, height, rotation = 0):
 			if c > 0:
 				break
 		#second combinations
-		if (width<theBox[2] and length<theBox[0] and height<theBox[1] and rotation == 5):
+		if (width<=theBox[2] and length<=theBox[0] and height<=theBox[1] and rotation == 5):
 			c = 0
 			if ((smallestObject[1] + largestObject[1]) <= theBox[2]):
 				print("It fits when both objects are rolled +90 degrees and pitched +90 degrees, or yawed +90 degrees and rolled +90 degrees, or pitched +90 degrees and yawed +90 degrees, stacked on top of the largest object")
