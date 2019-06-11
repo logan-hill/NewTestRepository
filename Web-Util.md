@@ -125,30 +125,31 @@ Category: "Web Functions"
 
 'WRAPIF(start, content, end)'
 
-Places a delimiter (comma as default) between every iterator in the group
+Combines the start, content, and end arguments
 
 **Behavior**
 
-- Places a delimiter between each iterator
-- Returns None is the iterator is None
+- Combines and returns the three arguments
+- Returns an empty string is content is empty
 
 ------meta------
 
-Topic: "DELIM Function"
+Topic: "WRAPIF Function"
 Category: "Utility Functions"
-Category: "Web Functions"#  DELIM Function
+Category: "Web Functions"
 
-'DELIM(iterator, delimiter=',', default=None)'
+#  BR Function
 
-Places a delimiter (comma as default) between every iterator in the group
+'BR(text)'
+
+text
 
 **Behavior**
 
-- Places a delimiter between each iterator
-- Returns None is the iterator is None
+- t
 
 ------meta------
 
-Topic: "DELIM Function"
+Topic: "BR Function"
 Category: "Utility Functions"
 Category: "Web Functions"
