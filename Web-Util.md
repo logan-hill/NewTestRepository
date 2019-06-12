@@ -142,14 +142,101 @@ Category: "Web Functions"
 
 'BR(text)'
 
-text
+Replaces the new line operator '\n', with an HTML friendly <br />.
 
 **Behavior**
 
-- t
+- Finds the first occurence of '\n' in a given text
+- Replaces the found occurence of '\n' with <br />
 
 ------meta------
 
 Topic: "BR Function"
+Category: "Utility Functions"
+Category: "Web Functions"
+
+#  HS_BR Function
+
+'HS_BR(text, OrElseHTML='', OrElse='')'
+
+Replaces the new line operator '\n', with an HTML friendly <br />, can work with Special HTML characters.
+
+**Behavior**
+
+- Turns all HTML special characters into strings
+- Finds all occurences of '\n' in a given text
+- Replaces the found occurence of '\n' with <br />
+
+------meta------
+
+Topic: "HS_BR Function"
+Category: "Utility Functions"
+Category: "Web Functions"
+
+#  HS_Wrap Function
+
+'HS_Wrap(start, iterator, end, OrElseHTML='', OrElse='')'
+
+- Creates a string that contains the start and end arguements, and a v variable, which is sent through an iterator using v as the index.
+- Continually adds to the string untill the v variable fully goes through the iterator argument
+
+**Behavior**
+
+- Creates a string that is made up of an empty string followed by the start argument, then the current version of the v variable that is run through the HS() function, then the end argument.
+- Will repeat the above command and add to the string untill the v variable reaches the end of the iterator
+
+------meta------
+
+Topic: "HS_Wrap Function"
+Category: "Utility Functions"
+Category: "Web Functions"
+
+#  HS_Join Function
+
+'HS_Join(delimiter, iterator, OrElseHTML='', OrElse='')'
+
+- Creates a string that contains a delimiter character and a v variable
+- Continually adds to the string untill the v variable fully goes through the iterator argument
+
+**Behavior**
+
+- Creates a string using the delimeter argument and the v variable run through HS()
+- Repeats untill the v has passed through the iterator argument
+
+------meta------
+
+Topic: "HS_Join Function"
+Category: "Utility Functions"
+Category: "Web Functions"
+
+#  HS_Tag Function
+
+'HS_Tag(tagname, content=None, **args)'
+
+- Forces all attributes into the lower case
+
+**Behavior**
+
+- Creates a tag using the tagname and args arguments
+
+------meta------
+
+Topic: "HS_Tag Function"
+Category: "Utility Functions"
+Category: "Web Functions"
+
+#  HS_A Function
+
+'HS_A(href, label, **args)'
+
+- Forces all attributes into the lower case
+
+**Behavior**
+
+- Creates a tag using the tagname and args arguments
+
+------meta------
+
+Topic: "HS_A Function"
 Category: "Utility Functions"
 Category: "Web Functions"
